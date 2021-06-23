@@ -370,6 +370,7 @@ impl VirtualMachine {
     }
 }
 fn main() {
+    arch_dependent::license_notice();
     let mut machine = VirtualMachine::new();
     arch_dependent::load_program(&mut machine.mem);
     machine.run();

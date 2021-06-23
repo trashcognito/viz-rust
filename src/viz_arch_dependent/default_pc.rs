@@ -2,6 +2,10 @@ use std::fs::File;
 use byteorder::{BigEndian, ReadBytesExt};
 use std::io::{Read, Write};
 use rand;
+pub fn license_notice() {
+    println!("This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.");
+}
 pub fn load_program(program_space:&mut [u16; 0x10000]) {
     let mut line = String::new();
     println!("Enter file path to run:");
