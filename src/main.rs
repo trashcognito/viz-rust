@@ -131,7 +131,7 @@ impl VirtualMachine {
                     Some(val) => val,
                     None => &mut null
                 };
-                *out0 = in0 - in1;
+                *out0 = in0.wrapping_sub(in1);
             },
             //MUL
             3 => {
@@ -139,7 +139,7 @@ impl VirtualMachine {
                     Some(val) => val,
                     None => &mut null
                 };
-                *out0 = in0 * in1;
+                *out0 = in0.wrapping_mul(in1);
             },
             //DIV
             4 => {
@@ -150,7 +150,7 @@ impl VirtualMachine {
                         Some(val) => val,
                         None => &mut null
                     };
-                    *out0 = in0 / in1;
+                    *out0 = in0.wrapping_div(in1);
                 }
             },
             //CMP
@@ -295,7 +295,7 @@ impl VirtualMachine {
             //PSH
             21 => {
                 self.mem[(0xFF00 | (self.sp as u16)) as usize] = in0;
-                self.sp -= 1;
+                self.sp = self.sp.wrapping_sub(1);
             },
             //POP
             22 => {
@@ -356,7 +356,7 @@ impl VirtualMachine {
             _ => {}
         };
         if increment {
-           self.pc += 4;
+            self.pc = self.pc.wrapping_add(4);
         }
         return false;
     }

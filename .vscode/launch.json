@@ -1,0 +1,42 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'viz-rust'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=viz-rust",
+                    "--package=viz-rust"
+                ],
+                "filter": {
+                    "name": "viz-rust",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'viz-rust'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=viz-rust",
+                    "--package=viz-rust"
+                ],
+                "filter": {
+                    "name": "viz-rust",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

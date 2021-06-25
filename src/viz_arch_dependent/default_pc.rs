@@ -57,5 +57,5 @@ pub fn entropy() -> u16 {
     rand::random()
 }
 pub fn pow16(base:u16, exp:u16) -> u16 {
-    return base.pow(exp as u32)
+    return base.wrapping_pow(exp as u32)
 }
